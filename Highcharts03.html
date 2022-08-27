@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highcharts-樣式設定</title>
+    <!-- Highcharts -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 600px"></div>
+    <script>
+      const data = {
+        "18-24歲": 12,
+        "25-29歲": 18,
+        "30-34歲": 22,
+        "35-39歲": 25,
+        "40-44歲": 32,
+        "45-49歲": 35,
+        "50-54歲": 26,
+        "55歲+": 18,
+      };
+      const container = document.querySelector("#container");
+      const xAxisCate = Object.keys(data);
+      const seriesData = xAxisCate.map((key) => data[key]);
+      var myChart = Highcharts.chart(container, {
+        chart: {
+          type: "column", //圖表整體設定
+          inverted: true, //座標軸
+          backgroundColor: "#ccc", //圖表
+          plotBackgroundColor: "#fff", //繪圖區
+          borderWidth: 3, //圖表
+          plotBorderWidth: 2, //繪圖區
+          borderColor: "#ccc", //圖表
+          plotBorderColor: "#fff", //繪圖區
+          spacing: [10, 10, 15, 10], //上右下左padding
+        },
+        title: { text: "公司員工年齡分佈" },
+        xAxis: { categories: xAxisCate },
+        yAxis: { title: { text: "人數" } },
+        series: [{ name: "XX公司員工", data: seriesData }],
+      });
+    </script>
+  </body>
+</html>

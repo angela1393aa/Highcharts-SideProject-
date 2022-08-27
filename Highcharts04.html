@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highcharts-文字設定</title>
+    <!-- Highcharts -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 600px"></div>
+    <script>
+      const data = {
+        "18-24歲": 12,
+        "25-29歲": 18,
+        "30-34歲": 22,
+        "35-39歲": 25,
+        "40-44歲": 32,
+        "45-49歲": 35,
+        "50-54歲": 26,
+        "55歲+": 18,
+      };
+      const container = document.querySelector("#container");
+      const xAxisCate = Object.keys(data);
+      const seriesData = xAxisCate.map((key) => data[key]);
+      var myChart = Highcharts.chart(container, {
+        chart: {
+          type: "column",
+          backgroundColor: "#ccc",
+          plotBackgroundColor: "#fff",
+        },
+        title: {
+          text: "主標題 | <a href='https://www.highcharts.com.cn' target='_blank'>中文教程</a>", //標題的文字
+          style: {
+            fontSize: "20px",
+            fontWeight: "bold",
+            textAlign: "left",
+            color: "#292929",
+            padding: "8px",
+          }, //標題樣式
+          useHTML: true, //HTML 標籤具備的特性
+          align: "center", //圖片在水平方向的對齊方式
+          verticalAlign: "top", //圖片在垂直方向的對齊方式
+          floating: true, //讓標題文字浮動在圖表之上
+          x: 3,
+          y: 1,
+          margin: 1, //調整標題與繪圖區 (plot) 的間距,只有在 verticalAlign 是 top 的時候才有效
+        }, //主標題
+        subtitle: {
+          text: "副標題 | <a href='https://www.highcharts.com.cn' target='_blank'>中文教程</a>", //標題的文字
+          style: {
+            fontSize: "10px",
+            fontWeight: "bold",
+            textAlign: "left",
+            color: "#292929",
+            padding: "8px",
+          },
+          useHTML: true, //HTML 標籤具備的特性
+          align: "center", //圖片在水平方向的對齊方式
+          verticalAlign: "top", //圖片在垂直方向的對齊方式
+          floating: true, //讓標題文字浮動在圖表之上
+          x: 3,
+          y: 17,
+        }, //副標題
+        caption: {
+          text: "圖表說明設定 | <a href='https://www.highcharts.com.cn' target='_blank'>中文教程</a>", //標題的文字
+          style: {
+            fontSize: "16px",
+            fontWeight: "bold",
+            textAlign: "left",
+            color: "#292929",
+            padding: "8px",
+          },
+          align: "center", //圖片在水平方向的對齊方式
+          //   verticalAlign: "top", //圖片在垂直方向的對齊方式
+        }, // 圖表說明設定
+        credits: {
+          enabled: false, //開/關版權標籤
+          text: "版權標籤", //版權標籤文字
+          href: "https://www.google.com.tw/", //版權標籤連結
+          style: {
+            color: "#aaa",
+          }, //樣式
+          position: {
+            align: "right",
+            verticalAlign: "bottom",
+            x: -10,
+            y: -5,
+          }, //位置
+        }, // 版權標籤設定
+        xAxis: { categories: xAxisCate },
+        yAxis: { title: { text: "人數" } },
+        series: [{ name: "XX公司員工", data: seriesData }],
+      });
+    </script>
+  </body>
+</html>

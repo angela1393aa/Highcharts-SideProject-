@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highcharts-圖例設定</title>
+    <!-- Highcharts -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 600px"></div>
+    <script>
+      const xdata = {
+        "18-24歲": 12,
+        "25-29歲": 18,
+        "30-34歲": 22,
+        "35-39歲": 25,
+        "40-44歲": 32,
+        "45-49歲": 35,
+        "50-54歲": 26,
+        "55歲+": 18,
+      };
+
+      const odata = {
+        "18-24歲": 15,
+        "25-29歲": 20,
+        "30-34歲": 28,
+        "35-39歲": 22,
+        "40-44歲": 20,
+        "45-49歲": 18,
+        "50-54歲": 13,
+        "55歲+": 3,
+      };
+      const container = document.querySelector("#container");
+      const xAxisCate = Object.keys(xdata);
+      const xSeriesData = xAxisCate.map((key) => xdata[key]);
+      const oSeriesData = xAxisCate.map((key) => odata[key]);
+      var myChart = Highcharts.chart(container, {
+        chart: { type: "column" },
+        title: { text: "公司員工年齡分佈" },
+        xAxis: { categories: xAxisCate },
+        yAxis: { title: { text: "人數" } },
+        series: [
+          {
+            name: "XX公司員工",
+            data: xSeriesData,
+          },
+          {
+            name: "OO公司員工",
+            data: oSeriesData,
+          },
+        ], // 2組以上數據列設定
+        legend: {
+          enabled: true, //圖例顯示/隱藏
+          align: "center", //圖例在圖表中的水平位置
+          verticalAlign: "bottom", //圖例在圖表中的垂直位置
+        }, // 圖例設定
+        tooltip: {}, // 提示框設定
+      });
+    </script>
+  </body>
+</html>
