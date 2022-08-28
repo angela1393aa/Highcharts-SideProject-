@@ -45,16 +45,50 @@
           {
             name: "XX公司員工",
             data: xSeriesData,
+            showInLegend: true,
           },
           {
             name: "OO公司員工",
             data: oSeriesData,
+            showInLegend: true,
           },
         ], // 2組以上數據列設定
         legend: {
           enabled: true, //圖例顯示/隱藏
           align: "center", //圖例在圖表中的水平位置
-          verticalAlign: "bottom", //圖例在圖表中的垂直位置
+          verticalAlign: "top", //圖例在圖表中的垂直位置
+          layout: "horizontal", //"horizontal"左右排列"vertical"上下排列
+          //   floating: true, //圖例浮動在圖表之上
+          x: 6, //偏移位置
+          y: 6, //偏移位置
+          backgroundColor: "#eee",
+          borderWidth: 5,
+          borderRadius: 10,
+          borderColor: "#fa0",
+          margin: 1,
+          padding: 8,
+          itemDistance: 36, //圖例之間的水平間距
+          itemMarginTop: 10, //圖例之間的垂直間距
+          itemMarginBottom: 10, //圖例之間的垂直間距
+          itemStyle: {
+            color: "#fa0",
+            cursor: "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
+            textOverflow: "ellipsis",
+          },
+          itemHoverStyle: {
+            color: "#000000",
+          }, //滑鼠移過去
+          itemHiddenStyle: {
+            color: "#cccccc",
+          }, //點下去後
+          symbolWidth: 25, //調整圖例符號的寬高
+          symbolHeight: 10, //調整圖例符號的寬高
+          squareSymbol: false, //true維持寬高相等,false長方形/橢圓形的符號
+          symbolRadius: 5, //圖例符號的圓角
+          //   labelFormat:,
+          //   labelFormatter:,
         }, // 圖例設定
         tooltip: {}, // 提示框設定
       });
