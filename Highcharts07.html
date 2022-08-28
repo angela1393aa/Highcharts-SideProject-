@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highcharts-座標軸的設定- 外觀樣式</title>
+    <!-- Highcharts -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 600px"></div>
+    <script>
+      const xdata = [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+        [3, 4],
+        [4, 8],
+        [5, 16],
+        [6, 32],
+        [7, 64],
+      ];
+
+      const container = document.querySelector("#container");
+
+      var myChart = Highcharts.chart(container, {
+        chart: { type: "spline", height: 600 },
+        title: { text: "物體加速度" },
+        credits: { enabled: false },
+        legend: { enabled: false },
+        xAxis: {
+          title: {
+            text: "時間 (s)",
+          }, //Ｘ軸標題
+
+          lineWidth: 2, //調整軸線的粗細
+          lineColor: "#ccd6eb", //調整軸線的線條顏色
+
+          tickWidth: 2, //調整主刻度的粗細
+          tickLength: 10, //調整主刻度的長度
+          tickColor: "#000", //調整主刻度的顏色
+          tickPosition: "inside", //調整主刻度要在軸線以內或以外
+
+          minorTicks: true, //顯示副刻度及副格線
+          minorTickWidth: 1, //調整副刻度的粗細
+          minorTickLength: 9, //調整副刻度的長度
+          minorTickColor: "#fa0", //調整副刻度的顏色
+          minorTickPosition: "inside", //調整副刻度要在軸線以內或以外
+
+          gridLineWidth: 1, //調整主格線的粗細
+          gridLineColor: "#ccc", //調整主格線的線條顏色
+          gridLineDashStyle: "Solid", //調整主格線的線條樣式
+
+          minorGridLineWidth: 1, //調整副格線的粗細
+          minorGridLineColor: "#eee", //調整副格線的線條顏色
+          minorgridLineDashStyle: "Solid", //調整副格線的線條樣式
+
+          labels: {
+            style: {
+              color: "#fa0",
+            },
+            align: "left", //座標軸刻度的文字對齊
+            reserveSpace: true, //是否要為刻度標籤保留空間
+            // x: 0, //調整刻度標籤的偏移量
+            // y: 0, //調整刻度標籤的偏移量
+            rotation: 5, //設定刻度標籤的旋轉角度
+          }, // Ｘ軸刻度標籤設定
+          plotBands: [
+            {
+              from: 4, //設定數值範圍的起點
+              to: 5, //設定數值範圍的終點
+              color: "#ccc",
+            },
+          ], //標註帶
+        },
+        yAxis: {
+          title: {
+            text: "速度 (m/s)",
+          }, //Y軸標題
+
+          lineWidth: 2, //調整軸線的粗細
+          lineColor: "#ccd6eb", //調整軸線的線條顏色
+
+          tickWidth: 2, //調整主刻度的粗細
+          tickLength: 10, //調整主刻度的長度
+          tickColor: "#000", //調整主刻度的顏色
+          tickPosition: "inside", //調整主刻度要在軸線以內或以外
+
+          minorTicks: true, //顯示副刻度及副格線
+          minorTickWidth: 1, //調整副刻度的粗細
+          minorTickLength: 9, //調整副刻度的長度
+          minorTickColor: "#fa0", //調整副刻度的顏色
+          minorTickPosition: "inside", //調整副刻度要在軸線以內或以外
+
+          gridLineWidth: 1, //調整主格線的粗細
+          gridLineColor: "#ccc", //調整主格線的線條顏色
+          gridLineDashStyle: "Solid", //調整主格線的線條樣式
+
+          minorGridLineWidth: 1, //調整副格線的粗細
+          minorGridLineColor: "#eee", //調整副格線的線條顏色
+          minorgridLineDashStyle: "Solid", //調整副格線的線條樣式
+
+          labels: {
+            style: {
+              color: "#fa0",
+            },
+            align: "left", //座標軸刻度的文字對齊
+            reserveSpace: true, //是否要為刻度標籤保留空間
+            x: 1, //調整刻度標籤的偏移量
+            y: 1, //調整刻度標籤的偏移量
+            rotation: 5, //設定刻度標籤的旋轉角度
+          }, // Ｙ軸刻度標籤設定
+          plotLines: [
+            {
+              value: 55,
+              color: "red",
+              width: 5,
+            },
+          ], //標註線
+        },
+        series: [{ data: xdata, color: "#333", marker: { enabled: false } }],
+      });
+    </script>
+  </body>
+</html>

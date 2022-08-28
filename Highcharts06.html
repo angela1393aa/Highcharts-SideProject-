@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highcharts-提示框設定</title>
+    <!-- Highcharts -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 600px"></div>
+    <script>
+      const xdata = {
+        "18-24歲": 12,
+        "25-29歲": 18,
+        "30-34歲": 22,
+        "35-39歲": 25,
+        "40-44歲": 32,
+        "45-49歲": 35,
+        "50-54歲": 26,
+        "55歲+": 18,
+      };
+
+      const odata = {
+        "18-24歲": 15,
+        "25-29歲": 20,
+        "30-34歲": 28,
+        "35-39歲": 22,
+        "40-44歲": 20,
+        "45-49歲": 18,
+        "50-54歲": 13,
+        "55歲+": 3,
+      };
+      const container = document.querySelector("#container");
+      const xAxisCate = Object.keys(xdata);
+      const xSeriesData = xAxisCate.map((key) => xdata[key]);
+      const oSeriesData = xAxisCate.map((key) => odata[key]);
+      var myChart = Highcharts.chart(container, {
+        chart: { type: "column" },
+        title: { text: "公司員工年齡分佈" },
+        xAxis: { categories: xAxisCate },
+        yAxis: { title: { text: "人數" } },
+        series: [
+          {
+            name: "XX公司員工",
+            data: xSeriesData,
+            showInLegend: true,
+          },
+          {
+            name: "OO公司員工",
+            data: oSeriesData,
+            showInLegend: true,
+          },
+        ], // 2組以上數據列設定
+        legend: {
+          enabled: true,
+          align: "center",
+          verticalAlign: "top",
+          layout: "horizontal",
+          //   floating: true,
+          x: 6,
+          y: 6,
+          backgroundColor: "#eee",
+          borderWidth: 5,
+          borderRadius: 10,
+          borderColor: "#fa0",
+          margin: 1,
+          padding: 8,
+          itemDistance: 36,
+          itemMarginTop: 10,
+          itemMarginBottom: 10,
+          itemStyle: {
+            color: "#fa0",
+            cursor: "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
+            textOverflow: "ellipsis",
+          },
+          itemHoverStyle: {
+            color: "#000000",
+          },
+          itemHiddenStyle: {
+            color: "#cccccc",
+          },
+          symbolWidth: 25,
+          symbolHeight: 10,
+          squareSymbol: false,
+          symbolRadius: 5,
+        }, // 圖例設定角
+        tooltip: {
+          enabled: true, //提示框功能開啟/關閉
+          backgroundColor: "#eee",
+          borderWidth: 5,
+          borderRadius: 10,
+          borderColor: "#fa0",
+          style: {
+            color: "#fa0",
+            cursor: "pointer",
+            fontSize: "12px",
+            whiteSpace: "nowrap",
+          },
+          padding: 8,
+          distance: 36, //調整提示框與數據點之間的距離
+          followPointer: true, //提示框是否要跟著鼠標一起移動
+          outside: true, //提示框是否可以超出整個圖表的外框範圍
+          hideDelay: 1000, //離開 hover 狀態時，提示框在延遲一段時間後才會消失
+          shared: true, //提示框要顯示該數據點false還是所有數據列中的數據點資料true
+          valuePrefix: "共", //在數據點的數值加上前綴詞
+          valueSuffix: "人", //在數據點的數值加上後綴詞
+          valueDecimals: 2, //顯示小數點後幾位
+          format: {},
+        }, // 提示框設定
+      });
+    </script>
+  </body>
+</html>
